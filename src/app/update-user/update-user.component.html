@@ -1,0 +1,35 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update User </h3>
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
+
+        <div class="form-group">
+            <label> First Name</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label> Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+        </div>
+
+        <div class="form-group">
+            <label> Email Id</label>
+            <input type="text" class="form-control" id="emailId" [(ngModel)]="user.emailId" name="emailId">
+        </div>
+
+        <div class="form-group">
+            <label>Roles</label>
+
+            <ng-select [multiple]="true" [(ngModel)]="user.roles" [ngModelOptions]="{standalone: true}" required
+                placeholder="Edit roles">
+                <ng-option *ngFor="let role of roles" [value]="role.name">{{role.name}}</ng-option>
+            </ng-select>
+            <div *ngIf="!user.roles" class="invalid-feedback">
+                At least one Role is required
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Submit</button>
+
+    </form>
+</div>
